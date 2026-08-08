@@ -19,7 +19,7 @@ pipeline{
         stage('Run Tests') {
             steps {
                 // Run pytest and output results to an XML file
-                sh '''
+                bat '''
                 . venv/bin/activate
                 pytest --junitxml=test-results.xml
                 '''
