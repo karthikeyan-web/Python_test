@@ -10,6 +10,7 @@ pipeline{
         stage('Setup Environment'){
             steps{
                 bat '''
+                cd python_test
                 C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m venv venv
                 call venv\\Scripts\\activate.bat
                 pip install -r requirements.txt
@@ -20,6 +21,7 @@ pipeline{
             steps {
                 // Run pytest and output results to an XML file
                 bat '''
+                cd python_test
                 call venv\\Scripts\\activate.bat
                 pytest --junitxml=test-results.xml
                 '''
@@ -27,7 +29,7 @@ pipeline{
             post {
                 always {
                     // This tells Jenkins to parse the XML file and create a test report UI
-                    junit 'test-results.xml'
+                    junit 'python_test/test-results.xml'
                 }
             }
         }
