@@ -10,7 +10,7 @@ pipeline{
         stage('Setup Environment'){
             steps{
                 bat '''
-                C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python314 -m venv venv
+                C:\\Users\\ADMIN\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m venv venv
                 call venv\\Scripts\\activate.bat
                 pip install -r requirements.txt
                 '''
